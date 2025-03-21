@@ -22,6 +22,7 @@ public class UIMainMenu : MonoBehaviour
     private void Start()
     {
         player = GameManager.Instance.Player;
+        AddButtonListener();
         UpdateUI();
     }
 
@@ -32,6 +33,13 @@ public class UIMainMenu : MonoBehaviour
         expText.text = $"{player.exp}/{GameManager.Instance.GetExpForLevel(player.level)}";
         gold.text = player.gold.ToString();
         expBar.fillAmount = (float)player.exp / GameManager.Instance.GetExpForLevel(player.level);
+    }
+
+    private void AddButtonListener()
+    {
+        statusBtn.onClick.AddListener(UIManager.Instance.OpenStatus);
+        InventoryBtn.onClick.AddListener(UIManager.Instance.OpenInventory);
+
     }
 
 }

@@ -19,6 +19,7 @@ public class UIStatus : MonoBehaviour
     private void Start()
     {
         player = GameManager.Instance.Player;
+        AddButtonListener();
         UpdateUI();
     }
 
@@ -28,5 +29,9 @@ public class UIStatus : MonoBehaviour
         def.text = player.def.ToString();
         health.text = $"{GameManager.Instance.GetMaxHealth(player.level)}";
         critical.text = player.critical.ToString();
+    }
+    private void AddButtonListener()
+    {
+        closeBtn.onClick.AddListener(UIManager.Instance.OpenStatus);
     }
 }

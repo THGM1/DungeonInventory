@@ -10,22 +10,35 @@ public class UIManager : MonoBehaviour
         get { return instance; }
     }
 
-    [SerializeField] public Canvas mainMenu;
-    [SerializeField] public Canvas status;
-    [SerializeField] public Canvas inventory;
+    public UIMainMenu MainMenu { get; private set; }
+    public UIStatus Status { get; private set; }
+    public UIInventory Inventory { get; private set; }
 
     private void Awake()
     {
         instance = this;
+        MainMenu = FindObjectOfType<UIMainMenu>();
+        Inventory = FindObjectOfType<UIInventory>();
+        Status = FindObjectOfType<UIStatus>();
+    }
+    private void Start()
+    {
+        Status.gameObject.SetActive(false);
+        Inventory.gameObject.SetActive(false);
+        //MainMenu.gameObject.SetActive(false);
+    }
+    public void OpenStatus()
+    {
+        Status.gameObject.SetActive(!Status.gameObject.activeSelf);
     }
 
-    public void ShowStatus()
+    public void OpenInventory()
     {
-        status.gameObject.SetActive(!status.gameObject.activeSelf);
-    }
-    public void ShowInventory()
-    {
-        inventory.gameObject.SetActive(!inventory.gameObject.activeSelf);
+        Inventory.gameObject.SetActive(!Inventory.gameObject.activeSelf);
     }
 
+    public void OpenMainMenu()
+    {
+        MainMenu.gameObject.SetActive(!MainMenu.gameObject.activeSelf);
+    }
 }
