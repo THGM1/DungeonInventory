@@ -23,7 +23,7 @@ public class UIInventory : MonoBehaviour
 
     private void UpdateUI()
     {
-        countTxt.text = $"{curCount}/{maxCount}";
+        countTxt.text = $"{curCount} / {maxCount}";
     }
 
     private void AddButtonListener()

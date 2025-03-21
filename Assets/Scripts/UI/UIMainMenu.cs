@@ -26,13 +26,13 @@ public class UIMainMenu : MonoBehaviour
         UpdateUI();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
-        name.text = player.playerName;
-        level.text = $"Lv. {player.level.ToString()}";
-        expText.text = $"{player.exp}/{GameManager.Instance.GetExpForLevel(player.level)}";
-        gold.text = player.gold.ToString();
-        expBar.fillAmount = (float)player.exp / GameManager.Instance.GetExpForLevel(player.level);
+        name.text = player.PlayerName;
+        level.text = $"Lv. {player.Level.ToString()}";
+        expText.text = $"{player.Exp}/{player.MaxExp}";
+        gold.text = player.Gold.ToString();
+        expBar.fillAmount = (float)player.Exp / player.MaxExp;
     }
 
     private void AddButtonListener()

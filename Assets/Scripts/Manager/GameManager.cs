@@ -15,12 +15,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Character player;
-    public Character Player
-    {
-        get { return player; }
-        set { player = value; }
-    }
+    public Character Player { get; private set; }
 
     private int[] expTable = { 10, 20, 30, 40, 50 };
     private int[] maxHealth = { 10, 20, 30, 40, 50 };
@@ -38,6 +33,11 @@ public class GameManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        SetData("GON", 3, 5, 1000, 5, 3, 1);
+    }
+    private void Start()
+    {
+        
     }
 
     public int GetExpForLevel(int level)
@@ -50,5 +50,14 @@ public class GameManager : MonoBehaviour
     {
         if(level >= maxHealth.Length) return maxHealth[maxHealth.Length -1];
         return maxHealth[level];    
+    }
+
+    public void SetData(string playerName, int level, int exp, int gold, int atk, int def, int critical)
+    {
+        Player = new GameObject("Player").AddComponent<Character>();
+        Player = new Character(playerName, level, exp, gold, atk, def, critical);
+
+        //UIManager.Instance.MainMenu.UpdateUI();
+        //UIManager.Instance.Status.UpdateUI();
     }
 }

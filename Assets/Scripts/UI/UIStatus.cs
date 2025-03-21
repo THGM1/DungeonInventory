@@ -23,12 +23,12 @@ public class UIStatus : MonoBehaviour
         UpdateUI();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
-        atk.text = player.atk.ToString();
-        def.text = player.def.ToString();
-        health.text = $"{GameManager.Instance.GetMaxHealth(player.level)}";
-        critical.text = player.critical.ToString();
+        atk.text = player.Atk.ToString();
+        def.text = player.Def.ToString();
+        health.text = $"{player.CurHealth}/{player.MaxHealth}";
+        critical.text = player.Critical.ToString();
     }
     private void AddButtonListener()
     {

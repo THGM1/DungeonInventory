@@ -352,19 +352,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 72997890}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 327435855}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenInventory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &140120694
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &140120695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,19 +805,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 200884152}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 327435855}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenStatus
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &203903802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,9 +1094,9 @@ RectTransform:
   - {fileID: 1821387304}
   m_Father: {fileID: 663113624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -325}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299158938
@@ -1744,7 +1720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curCount: 0
-  maxCount: 0
+  maxCount: 10
   countTxt: {fileID: 2079660436}
   useBtn: {fileID: 212690077}
   equipBtn: {fileID: 384266811}
@@ -1903,9 +1879,9 @@ RectTransform:
   - {fileID: 1436980594}
   m_Father: {fileID: 663113624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &400561406
@@ -2703,7 +2679,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3486e1a67e017f54695d60c57c599f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1883523724}
 --- !u!4 &722273184
 Transform:
   m_ObjectHideFlags: 0
@@ -3703,9 +3678,9 @@ RectTransform:
   - {fileID: 749696558}
   m_Father: {fileID: 663113624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -25}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1006616754
@@ -4413,19 +4388,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1304382068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 327435855}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenStatus
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1304653817
 GameObject:
   m_ObjectHideFlags: 0
@@ -4459,9 +4422,9 @@ RectTransform:
   - {fileID: 2060240182}
   m_Father: {fileID: 663113624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -125}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1304653819
@@ -4680,19 +4643,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1314606940}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 327435855}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenInventory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1376949748
 GameObject:
   m_ObjectHideFlags: 0
@@ -6511,7 +6462,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1883523725}
-  - component: {fileID: 1883523724}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6519,27 +6469,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1883523724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883523723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd677495219740d41bac49cfd5cca12c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerName: Jade
-  level: 10
-  exp: 3
-  gold: 1
-  atk: 5
-  def: 4
-  curHealth: 0
-  maxHealth: 0
-  critical: 3
 --- !u!4 &1883523725
 Transform:
   m_ObjectHideFlags: 0
