@@ -10,9 +10,6 @@ public class UIManager : MonoBehaviour
         get { return instance; }
     }
 
-    private Character player;
-    public Character Player { get { return player; } }
-
     [SerializeField] public Canvas mainMenu;
     [SerializeField] public Canvas status;
     [SerializeField] public Canvas inventory;
@@ -20,7 +17,6 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        player = GameManager.Instance.Player;
     }
 
     public void ShowStatus()

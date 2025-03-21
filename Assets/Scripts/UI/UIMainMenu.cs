@@ -19,17 +19,19 @@ public class UIMainMenu : MonoBehaviour
 
     Character player;
 
-    private void Awake()
+    private void Start()
     {
-        player = UIManager.Instance.Player;
+        player = GameManager.Instance.Player;
+        UpdateUI();
     }
 
     private void UpdateUI()
     {
-        name.text = player.name;
+        name.text = player.playerName;
         level.text = $"Lv. {player.level.ToString()}";
         expText.text = $"{player.exp}/{GameManager.Instance.GetExpForLevel(player.level)}";
         gold.text = player.gold.ToString();
+        expBar.fillAmount = (float)player.exp / GameManager.Instance.GetExpForLevel(player.level);
     }
 
 }

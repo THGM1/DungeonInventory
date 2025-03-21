@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIStatus : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Character player;
+    [Header("½ºÅÈ")]
+    [SerializeField] private TextMeshProUGUI atk;
+    [SerializeField] private TextMeshProUGUI def;
+    [SerializeField] private TextMeshProUGUI health;
+    [SerializeField] private TextMeshProUGUI critical;
+
+    [Header("¹öÆ°")]
+    [SerializeField] private Button closeBtn;
+
+    private void Start()
     {
-        
+        player = GameManager.Instance.Player;
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateUI()
     {
-        
+        atk.text = player.atk.ToString();
+        def.text = player.def.ToString();
+        health.text = $"{GameManager.Instance.GetMaxHealth(player.level)}";
+        critical.text = player.critical.ToString();
     }
 }

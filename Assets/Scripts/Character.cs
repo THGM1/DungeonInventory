@@ -5,16 +5,21 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [Header("기본 정보")]
-    public string name;
+    public string playerName;
     public int level;
     public int exp;
     public int gold;
 
-    [Header("스텟")]
+    [Header("스탯")]
     public int atk;
     public int def;
     public int curHealth;
     public int maxHealth;   
     public int critical;
+
+    private void Start()
+    {
+        curHealth = maxHealth;
+    }
 
 }

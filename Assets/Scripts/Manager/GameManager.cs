@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour
     }
 
     private int[] expTable = { 10, 20, 30, 40, 50 };
-
+    private int[] maxHealth = { 10, 20, 30, 40, 50 };
     private void Awake()
     {
-        if(instance != null)
+        if(instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -44,5 +44,11 @@ public class GameManager : MonoBehaviour
     {
         if(level >= expTable.Length) return expTable[expTable.Length - 1];
         return expTable[level];
+    }
+
+    public int GetMaxHealth(int level)
+    {
+        if(level >= maxHealth.Length) return maxHealth[maxHealth.Length -1];
+        return maxHealth[level];    
     }
 }
