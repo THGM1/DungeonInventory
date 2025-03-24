@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,7 +23,6 @@ public class UIInventory : MonoBehaviour
     [Header("선택된 아이템")]
     [SerializeField] private TextMeshProUGUI selectedItemName;
 
-
     Item selectedItem;
     int selectedIndex;
     private List<UISlot> slots = new();
@@ -37,18 +37,20 @@ public class UIInventory : MonoBehaviour
         equipBtn.gameObject.SetActive(false);
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         countTxt.text = $"{curCount} / {maxCount}";
-        
+
         foreach(var slot in slots)
         {
             if (slot != null) slot.SetItem(slot.item, slot.item.Count);
             else slot.Clear();
             
         }
-
+        
         selectedItemName.text = selectedItem != null ? selectedItem.Name : string.Empty;
+        if(selectedItem != null)
+            slots[selectedIndex].RefreshUI();
     }
 
     private void AddButtonListener()
@@ -124,11 +126,12 @@ public class UIInventory : MonoBehaviour
             RemoveSelectedItem();
         }
         slots[selectedIndex].SetEquipped();
+        UpdateUI();
     }
 
     void RemoveSelectedItem()
     {
-        slots[selectedIndex].item.Count--;
+        //slots[selectedIndex].item.Count--;
         if (slots[selectedIndex].item.Count <= 0)
         {
             selectedItem = null;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character 
 {
     public string PlayerName { get; private set; }
     public int Level { get; private set; }
@@ -32,7 +32,7 @@ public class Character : MonoBehaviour
         Critical = critical;
         MaxExp = GameManager.Instance.GetExpForLevel(Level);
         MaxHealth = GameManager.Instance.GetMaxHealth(Level);
-        CurHealth = MaxHealth;
+        CurHealth = 1;
 
         Inventory = new List<Item>();
     }

@@ -19,13 +19,12 @@ public class UISlot : MonoBehaviour
         this.item = item;
         this.index = index;
         icon.sprite = item.Icon;
-        itemCount.text = count > 0 ? count.ToString() : string.Empty;
+        itemCount.text = count > 1 ? count.ToString() : string.Empty;
     }
 
-    public void RefreshUI(int count)
+    public void RefreshUI()
     {
-        itemCount.text = count.ToString();
-        // 착용 상태 업데이트
+        itemCount.text = item.Count.ToString();
     }
 
     public void Clear()

@@ -14,14 +14,15 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gold;// Gold 텍스트
 
     [Header("버튼")]
-    [SerializeField] private Button statusBtn;// Status 버튼
-    [SerializeField] private Button InventoryBtn;// Inventory 버튼
+    [SerializeField] public Button statusBtn;// Status 버튼
+    [SerializeField] public Button InventoryBtn;// Inventory 버튼
 
     Character player;
 
     private void Start()
     {
         player = GameManager.Instance.Player;
+        if (player == null) Debug.Log("player null");
         AddButtonListener();
         UpdateUI();
     }

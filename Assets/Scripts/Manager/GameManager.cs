@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        
+
     }
 
     public int GetExpForLevel(int level)
@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour
     {
         SetPlayer();
         SetItem();
-        //UIManager.Instance.MainMenu.UpdateUI();
-        //UIManager.Instance.Status.UpdateUI();
     }
 
     public void SetPlayer()
@@ -72,17 +70,13 @@ public class GameManager : MonoBehaviour
 
     public void SetItem()
     {
-        EquipItem sword = new EquipItem("Sword", swordIcon, 10, 0, 1);
-        EquipItem shield = new EquipItem("Shield", shieldIcon, 0, 5, 0);
-        ConsumableItem potion = new ConsumableItem("Potion", potionIcon, 20, 3);
-        if (sword == null) Debug.Log("sword null");
+        EquipItem sword = new EquipItem("검", swordIcon, 10, 0, 1);
+        EquipItem shield = new EquipItem("방패", shieldIcon, 0, 5, 0);
+        ConsumableItem potion = new ConsumableItem("포션", potionIcon, 20, 3);
+
         Player.AddItem(sword);
         Player.AddItem(shield);
         Player.AddItem(potion);
 
-        foreach(var item in Player.Inventory)
-        {
-            if (item == null) Debug.Log("null");
-        }
     }
 }

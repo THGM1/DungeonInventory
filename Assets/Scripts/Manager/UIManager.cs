@@ -30,15 +30,24 @@ public class UIManager : MonoBehaviour
     public void OpenStatus()
     {
         Status.gameObject.SetActive(!Status.gameObject.activeSelf);
+        MainMenu.InventoryBtn.gameObject.SetActive(!Status.gameObject.activeSelf);
+        MainMenu.statusBtn.gameObject.SetActive(!Status.gameObject.activeSelf);
+
+        Status.UpdateUI();
     }
 
     public void OpenInventory()
     {
         Inventory.gameObject.SetActive(!Inventory.gameObject.activeSelf);
+        MainMenu.InventoryBtn.gameObject.SetActive(!Inventory.gameObject.activeSelf);
+        MainMenu.statusBtn.gameObject.SetActive(!Inventory.gameObject.activeSelf);
+
+        Inventory.UpdateUI();
     }
 
     public void OpenMainMenu()
     {
         MainMenu.gameObject.SetActive(!MainMenu.gameObject.activeSelf);
+
     }
 }
