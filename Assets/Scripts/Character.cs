@@ -9,11 +9,13 @@ public class Character : MonoBehaviour
     public int Exp { get; private set; }
     public int MaxExp { get; private set; }
     public int Gold { get; private set; }
-    public int Atk { get; private set; }
-    public int Def { get; private set; }
-    public int CurHealth { get; private set; }
+    public int Atk { get; set; }
+    public int Def { get;  set; }
+    public int CurHealth { get; set; }
     public int MaxHealth { get; private set; }
-    public int Critical { get; private set; }
+    public int Critical { get; set; }
+
+    public List<Item> Inventory { get; private set; }
 
     private void Start()
     {
@@ -31,5 +33,11 @@ public class Character : MonoBehaviour
         MaxExp = GameManager.Instance.GetExpForLevel(Level);
         MaxHealth = GameManager.Instance.GetMaxHealth(Level);
         CurHealth = MaxHealth;
+
+        Inventory = new List<Item>();
+    }
+    public void AddItem(Item item)
+    {
+        Inventory.Add(item);
     }
 }

@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
 
     private int[] expTable = { 10, 20, 30, 40, 50 };
     private int[] maxHealth = { 10, 20, 30, 40, 50 };
+
+    [SerializeField] private Sprite swordIcon;
+    [SerializeField] private Sprite shieldIcon;
+    [SerializeField] private Sprite potionIcon;
+
     private void Awake()
     {
         if(instance == null)
@@ -33,7 +38,7 @@ public class GameManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        SetData("GON", 3, 5, 1000, 5, 3, 1);
+        SetData();
     }
     private void Start()
     {
@@ -52,12 +57,32 @@ public class GameManager : MonoBehaviour
         return maxHealth[level];    
     }
 
-    public void SetData(string playerName, int level, int exp, int gold, int atk, int def, int critical)
+    public void SetData()
     {
-        Player = new GameObject("Player").AddComponent<Character>();
-        Player = new Character(playerName, level, exp, gold, atk, def, critical);
-
+        SetPlayer();
+        SetItem();
         //UIManager.Instance.MainMenu.UpdateUI();
         //UIManager.Instance.Status.UpdateUI();
+    }
+
+    public void SetPlayer()
+    {
+        Player = new Character("GON", 3, 14, 1000, 4, 2, 1);
+    }
+
+    public void SetItem()
+    {
+        EquipItem sword = new EquipItem("Sword", swordIcon, 10, 0, 1);
+        EquipItem shield = new EquipItem("Shield", shieldIcon, 0, 5, 0);
+        ConsumableItem potion = new ConsumableItem("Potion", potionIcon, 20, 3);
+        if (sword == null) Debug.Log("sword null");
+        Player.AddItem(sword);
+        Player.AddItem(shield);
+        Player.AddItem(potion);
+
+        foreach(var item in Player.Inventory)
+        {
+            if (item == null) Debug.Log("null");
+        }
     }
 }

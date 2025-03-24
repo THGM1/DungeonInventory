@@ -21,7 +21,7 @@ public class UIInventory : MonoBehaviour
 
     [Header("선택된 아이템")]
     [SerializeField] private TextMeshProUGUI selectedItemName;
-    [SerializeField] private TextMeshProUGUI selectedItemCount;
+
 
     Item selectedItem;
     int selectedIndex;
@@ -31,8 +31,10 @@ public class UIInventory : MonoBehaviour
     {
         UpdateUI();
         AddButtonListener();
+        InitInventoryUI();
 
-
+        useBtn.gameObject.SetActive(false);
+        equipBtn.gameObject.SetActive(false);
     }
 
     private void UpdateUI()
@@ -41,20 +43,23 @@ public class UIInventory : MonoBehaviour
         
         foreach(var slot in slots)
         {
-            if (slot != null) slot.SetItem(slot.item, slot.item.count);
+            if (slot != null) slot.SetItem(slot.item, slot.item.Count);
             else slot.Clear();
             
         }
+
+        selectedItemName.text = selectedItem != null ? selectedItem.Name : string.Empty;
     }
 
     private void AddButtonListener()
     {
-        //useBtn.onClick.AddListener();
-        //equipBtn.onClick.AddListener();
+        useBtn.onClick.AddListener(UseItem);
+        equipBtn.onClick.AddListener(UseItem);
         closeBtn.onClick.AddListener(UIManager.Instance.OpenInventory);
+
     }
 
-    private void InitInventoryUI(List<Item> items)
+    private void InitInventoryUI()
     {
         foreach(Transform slot in slotParent)
         {
@@ -62,16 +67,20 @@ public class UIInventory : MonoBehaviour
         }
         slots.Clear();
 
-        foreach(Item item in items)
+        List<Item> inventory = GameManager.Instance.Player.Inventory;
+
+        foreach(Item item in inventory)
         {
-            AddSlot(item, item.count);
+            AddSlot(item, item.Count);
         }
     }
     
     public void AddSlot(Item item, int count)
     {
         UISlot newSlot = Instantiate(slotPrefab, slotParent);
-        newSlot.SetItem(item, count);
+        int index = slots.Count;
+        newSlot.SetItem(item, index, count);
+
         slots.Add(newSlot);
     }
 
@@ -79,7 +88,7 @@ public class UIInventory : MonoBehaviour
     {
         foreach(var slot in slots)
         {
-            if (slot == null) return slot;
+            if (slot.item == null) return slot;
         }
         return null;
     }
@@ -100,15 +109,27 @@ public class UIInventory : MonoBehaviour
         selectedItem = slots[index].item;
         selectedIndex = index;
 
-        selectedItemName.text = selectedItem.name;
+        selectedItemName.text = selectedItem.Name;
         
+        useBtn.gameObject.SetActive(selectedItem is ConsumableItem);
+        equipBtn.gameObject.SetActive(selectedItem is EquipItem);
         
+    }
+
+    private void UseItem()
+    {
+        selectedItem.Use(GameManager.Instance.Player);
+        if(selectedItem is ConsumableItem)
+        {
+            RemoveSelectedItem();
+        }
+        slots[selectedIndex].SetEquipped();
     }
 
     void RemoveSelectedItem()
     {
-        slots[selectedIndex].item.count--;
-        if (slots[selectedIndex].item.count <= 0)
+        slots[selectedIndex].item.Count--;
+        if (slots[selectedIndex].item.Count <= 0)
         {
             selectedItem = null;
             slots[selectedIndex].item = null;
@@ -125,8 +146,4 @@ public class UIInventory : MonoBehaviour
         equipBtn.gameObject.SetActive(false);
     }
 
-    public void OnEquipButton()
-    {
-        
-    }
 }

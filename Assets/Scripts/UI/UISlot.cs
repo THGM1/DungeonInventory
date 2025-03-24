@@ -8,16 +8,17 @@ using UnityEngine.UI;
 public class UISlot : MonoBehaviour
 {
     [SerializeField] private Image icon;
-    [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemCount;
+    [SerializeField] private Image equipped;
 
+    private int index;
     public Item item;
 
-    public void SetItem(Item item, int count = 0)
+    public void SetItem(Item item, int index, int count = 0)
     {
         this.item = item;
-        icon.sprite = item.icon;
-        itemName.text = item.name;
+        this.index = index;
+        icon.sprite = item.Icon;
         itemCount.text = count > 0 ? count.ToString() : string.Empty;
     }
 
@@ -32,5 +33,21 @@ public class UISlot : MonoBehaviour
         item = null;
         icon.gameObject.SetActive(false);
         itemCount.text = string.Empty;
+    }
+
+    public void SetEquipped()
+    {
+        if(item is EquipItem equipItem) equipped.gameObject.SetActive(equipItem.isEquipped);
+    }
+
+    public void AddButtonListener()
+    {
+        Button button = GetComponent<Button>();
+        button.onClick.AddListener(SelectItem);
+    }
+
+    public void SelectItem()
+    {
+        UIManager.Instance.Inventory.SelectItem(index);
     }
 }
