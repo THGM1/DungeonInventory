@@ -24,23 +24,30 @@ public class UIInventory : MonoBehaviour
     [Header("선택된 아이템")]
     [SerializeField] private TextMeshProUGUI selectedItemName;
 
+    List<Item> inventory;
     Item selectedItem;
     int selectedIndex;
     private List<UISlot> slots = new();
 
     private void Start()
     {
-        UpdateUI();
+        inventory = GameManager.Instance.Player.Inventory;
+
         AddButtonListener();
         InitInventoryUI();
-
+        UpdateUI();
         useBtn.gameObject.SetActive(false);
         equipBtn.gameObject.SetActive(false);
     }
 
     public void UpdateUI()
     {
-        countTxt.text = $"{curCount} / {maxCount}";
+        if (inventory != null)
+        {
+            Debug.Log(curCount);
+            curCount = inventory.Count;
+            countTxt.text = $"{curCount} / {maxCount}";
+        }
         
         selectedItemName.text = selectedItem != null ? selectedItem.Name : string.Empty;
         if(selectedItem != null)
@@ -50,6 +57,7 @@ public class UIInventory : MonoBehaviour
             equipBtn.gameObject.SetActive(!item.isEquipped);
             unEquipBtn.gameObject.SetActive(item.isEquipped);
         }
+
     }
 
     private void AddButtonListener()
@@ -69,13 +77,12 @@ public class UIInventory : MonoBehaviour
         }
         slots.Clear();
 
-        List<Item> inventory = GameManager.Instance.Player.Inventory;
-
         foreach(Item item in inventory)
         {
             AddSlot(item, item.Count);
         }
         unEquipBtn.gameObject.SetActive(false);
+
     }
     
     public void AddSlot(Item item, int count)
@@ -139,11 +146,13 @@ public class UIInventory : MonoBehaviour
         if (selectedIndex < 0 || selectedIndex >= slots.Count) return;
         if (slots[selectedIndex].item.Count == 0)
         {
+            inventory.Remove(slots[selectedIndex].item);
             slots[selectedIndex].RefreshUI();
             selectedItem = null;
             slots[selectedIndex].item = null;
             selectedIndex = -1;
             ClearSelectedItem();
+
         }
     }
 
