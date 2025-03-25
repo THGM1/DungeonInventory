@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class UIInventory : MonoBehaviour
 {
     private int curCount; // 현재 아이템 수
-    private int maxCount; // 최대 아이템 수
+    private int maxCount = 100; // 최대 아이템 수
     [SerializeField] TextMeshProUGUI countTxt;
 
     [Header("버튼")]
@@ -57,6 +57,7 @@ public class UIInventory : MonoBehaviour
             equipBtn.gameObject.SetActive(!item.isEquipped);
             unEquipBtn.gameObject.SetActive(item.isEquipped);
         }
+        else unEquipBtn.gameObject.SetActive(false);
 
     }
 
@@ -109,6 +110,7 @@ public class UIInventory : MonoBehaviour
             equipBtn.gameObject.SetActive(!item.isEquipped);
             unEquipBtn.gameObject.SetActive(item.isEquipped);
         }
+        else unEquipBtn.gameObject.SetActive(false);
     }
 
     private void UseItem()
@@ -161,6 +163,7 @@ public class UIInventory : MonoBehaviour
         selectedItemName.text = string.Empty;
         useBtn.gameObject.SetActive(false);
         equipBtn.gameObject.SetActive(false);
+        unEquipBtn.gameObject.SetActive(false);
     }
 
 }
