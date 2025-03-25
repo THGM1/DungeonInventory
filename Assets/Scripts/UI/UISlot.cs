@@ -11,7 +11,7 @@ public class UISlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemCount;
     [SerializeField] private Image equipped;
 
-    private int index;
+    public int index;
     public Item item;
 
     public void SetItem(Item item, int index, int count = 0)
@@ -24,7 +24,13 @@ public class UISlot : MonoBehaviour
 
     public void RefreshUI()
     {
-        itemCount.text = item.Count.ToString();
+        itemCount.text = item.Count > 1 ? item.Count.ToString() : string.Empty;
+        if (item.Count == 0)
+        {
+            Clear();
+            Destroy(gameObject);
+
+        }
     }
 
     public void Clear()

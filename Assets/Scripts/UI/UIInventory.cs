@@ -40,13 +40,6 @@ public class UIInventory : MonoBehaviour
     public void UpdateUI()
     {
         countTxt.text = $"{curCount} / {maxCount}";
-
-        foreach(var slot in slots)
-        {
-            if (slot != null) slot.SetItem(slot.item, slot.item.Count);
-            else slot.Clear();
-            
-        }
         
         selectedItemName.text = selectedItem != null ? selectedItem.Name : string.Empty;
         if(selectedItem != null)
@@ -86,24 +79,6 @@ public class UIInventory : MonoBehaviour
         slots.Add(newSlot);
     }
 
-    UISlot GetEmptySlot()
-    {
-        foreach(var slot in slots)
-        {
-            if (slot.item == null) return slot;
-        }
-        return null;
-    }
-
-    UISlot GetItemSlot(Item item)
-    {
-        foreach(var slot in slots)
-        {
-            if (slot.item == item) return slot;
-        }
-        return null;
-    }
-
     public void SelectItem(int index)
     {
         if (slots[index].item == null) return;
@@ -120,26 +95,45 @@ public class UIInventory : MonoBehaviour
 
     private void UseItem()
     {
+        if (selectedItem == null) return;
+
+        int prevIndex = selectedIndex;
+
         selectedItem.Use(GameManager.Instance.Player);
-        if(selectedItem is ConsumableItem)
+
+        if (selectedItem is ConsumableItem)
         {
             RemoveSelectedItem();
         }
-        slots[selectedIndex].SetEquipped();
+        else if (selectedItem is EquipItem)
+        {
+            slots[selectedIndex].SetEquipped();
+        }
+
+        selectedIndex = prevIndex;
+        if (selectedIndex >= 0 && selectedIndex < slots.Count)
+        {
+            selectedItem = slots[selectedIndex].item;
+        }
+        else
+        {
+            selectedItem = null;
+        }
+
         UpdateUI();
     }
 
     void RemoveSelectedItem()
     {
-        //slots[selectedIndex].item.Count--;
-        if (slots[selectedIndex].item.Count <= 0)
+        if (selectedIndex < 0 || selectedIndex >= slots.Count) return;
+        if (slots[selectedIndex].item.Count == 0)
         {
+            slots[selectedIndex].RefreshUI();
             selectedItem = null;
             slots[selectedIndex].item = null;
             selectedIndex = -1;
             ClearSelectedItem();
         }
-        UpdateUI();
     }
 
     void ClearSelectedItem()

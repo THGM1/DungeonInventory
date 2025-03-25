@@ -19,28 +19,30 @@ public class EquipItem : Item
 
     public override void Use(Character player)
     {
-        if (isEquipped) UnEquip(player);
-        else Equip(player);
+        if (isEquipped) UnEquip();
+        else Equip();
     }
 
-    public void Equip(Character player)
+    public void Equip()
     {
         if (!isEquipped)
         {
-            player.Atk += Atk;
-            player.Def += Def;
-            player.Critical += Critical;
+            GameManager.Instance.equipAtk += Atk;
+            GameManager.Instance.equipDef += Def;
+            GameManager.Instance.equipCri += Critical;
+            GameManager.Instance.SetEquipStat(this);
             isEquipped = true;
         }
     }
 
-    public void UnEquip(Character player)
+    public void UnEquip()
     {
         if (isEquipped)
         {
-            player.Atk -= Atk;
-            player.Def -= Def;
-            player.Critical -= Critical;
+            GameManager.Instance.equipAtk -= Atk;
+            GameManager.Instance.equipDef -= Def;
+            GameManager.Instance.equipCri -= Critical;
+            GameManager.Instance.SetEquipStat(this);
             isEquipped = false;
         }
     }

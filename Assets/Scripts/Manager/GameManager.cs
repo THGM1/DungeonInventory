@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     private int[] expTable = { 10, 20, 30, 40, 50 };
     private int[] maxHealth = { 10, 20, 30, 40, 50 };
 
+    public int equipAtk;
+    public int equipDef;
+    public int equipCri;
+
     [SerializeField] private Sprite swordIcon;
     [SerializeField] private Sprite shieldIcon;
     [SerializeField] private Sprite potionIcon;
@@ -39,10 +43,6 @@ public class GameManager : MonoBehaviour
             }
         }
         SetData();
-    }
-    private void Start()
-    {
-
     }
 
     public int GetExpForLevel(int level)
@@ -72,11 +72,27 @@ public class GameManager : MonoBehaviour
     {
         EquipItem sword = new EquipItem("검", swordIcon, 10, 0, 1);
         EquipItem shield = new EquipItem("방패", shieldIcon, 0, 5, 0);
-        ConsumableItem potion = new ConsumableItem("포션", potionIcon, 20, 3);
+        ConsumableItem potion = new ConsumableItem("포션", potionIcon, 1, 3);
 
         Player.AddItem(sword);
         Player.AddItem(shield);
         Player.AddItem(potion);
 
+    }
+
+    public void SetEquipStat(EquipItem item)
+    {
+        if (!item.isEquipped)
+        {
+            Player.Atk += equipAtk;
+            Player.Def += equipDef;
+            Player.Critical += equipCri;
+        }
+        else
+        {
+            Player.Atk -= equipAtk;
+            Player.Def -= equipDef;
+            Player.Critical -= equipCri;
+        }
     }
 }
