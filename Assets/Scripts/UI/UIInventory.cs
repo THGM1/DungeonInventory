@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
-    [SerializeField] private int curCount; // 현재 아이템 수
-    [SerializeField] private int maxCount; // 최대 아이템 수
+    private int curCount; // 현재 아이템 수
+    private int maxCount; // 최대 아이템 수
     [SerializeField] TextMeshProUGUI countTxt;
 
     [Header("버튼")]
@@ -48,9 +48,9 @@ public class UIInventory : MonoBehaviour
             curCount = inventory.Count;
             countTxt.text = $"{curCount} / {maxCount}";
         }
-        
+
         selectedItemName.text = selectedItem != null ? selectedItem.Name : string.Empty;
-        if(selectedItem != null)
+        if (selectedItem != null)
             slots[selectedIndex].RefreshUI();
         if (selectedItem is EquipItem item)
         {
@@ -71,20 +71,20 @@ public class UIInventory : MonoBehaviour
 
     private void InitInventoryUI()
     {
-        foreach(Transform slot in slotParent)
+        foreach (Transform slot in slotParent)
         {
             Destroy(slot.gameObject);
         }
         slots.Clear();
 
-        foreach(Item item in inventory)
+        foreach (Item item in inventory)
         {
             AddSlot(item, item.Count);
         }
         unEquipBtn.gameObject.SetActive(false);
 
     }
-    
+
     public void AddSlot(Item item, int count)
     {
         UISlot newSlot = Instantiate(slotPrefab, slotParent);
@@ -102,9 +102,9 @@ public class UIInventory : MonoBehaviour
         selectedIndex = index;
 
         selectedItemName.text = selectedItem.Name;
-        
+
         useBtn.gameObject.SetActive(selectedItem is ConsumableItem);
-        if(selectedItem is EquipItem item)
+        if (selectedItem is EquipItem item)
         {
             equipBtn.gameObject.SetActive(!item.isEquipped);
             unEquipBtn.gameObject.SetActive(item.isEquipped);
@@ -162,6 +162,5 @@ public class UIInventory : MonoBehaviour
         useBtn.gameObject.SetActive(false);
         equipBtn.gameObject.SetActive(false);
     }
-
 
 }

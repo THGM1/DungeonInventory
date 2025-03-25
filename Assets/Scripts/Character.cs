@@ -17,10 +17,6 @@ public class Character
 
     public List<Item> Inventory { get; private set; }
 
-    private void Start()
-    {
-
-    }
     public Character(string name, int level, int exp, int gold, int atk, int def,int critical)
     {
         PlayerName = name;
