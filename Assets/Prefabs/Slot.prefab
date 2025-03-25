@@ -452,9 +452,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2408787999545192358}
   - {fileID: 4345380294725750149}
   - {fileID: 4404539288486223862}
+  - {fileID: 2408787999545192358}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -530,6 +530,7 @@ MonoBehaviour:
   icon: {fileID: 1968141429592491008}
   itemCount: {fileID: 2276166265031989050}
   equipped: {fileID: 3347551344052653569}
+  index: 0
 --- !u!114 &6752570648484782283
 MonoBehaviour:
   m_ObjectHideFlags: 0
