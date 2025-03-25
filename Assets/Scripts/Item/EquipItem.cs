@@ -39,10 +39,10 @@ public class EquipItem : Item
     {
         if (isEquipped)
         {
+            GameManager.Instance.SetEquipStat(this);
             GameManager.Instance.equipAtk -= Atk;
             GameManager.Instance.equipDef -= Def;
             GameManager.Instance.equipCri -= Critical;
-            GameManager.Instance.SetEquipStat(this);
             isEquipped = false;
         }
     }

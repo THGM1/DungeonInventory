@@ -14,7 +14,8 @@ public class UIInventory : MonoBehaviour
     [Header("버튼")]
     [SerializeField] private Button useBtn; // 사용 버튼
     [SerializeField] private Button equipBtn; // 장착 버튼
-    [SerializeField] private Button closeBtn;
+    [SerializeField] private Button closeBtn; // 닫기 버튼
+    [SerializeField] private Button unEquipBtn; // 해제 버튼
 
     [Header("슬롯")]
     [SerializeField] private UISlot slotPrefab;
@@ -44,12 +45,18 @@ public class UIInventory : MonoBehaviour
         selectedItemName.text = selectedItem != null ? selectedItem.Name : string.Empty;
         if(selectedItem != null)
             slots[selectedIndex].RefreshUI();
+        if (selectedItem is EquipItem item)
+        {
+            equipBtn.gameObject.SetActive(!item.isEquipped);
+            unEquipBtn.gameObject.SetActive(item.isEquipped);
+        }
     }
 
     private void AddButtonListener()
     {
         useBtn.onClick.AddListener(UseItem);
         equipBtn.onClick.AddListener(UseItem);
+        unEquipBtn.onClick.AddListener(UseItem);
         closeBtn.onClick.AddListener(UIManager.Instance.OpenInventory);
 
     }
@@ -68,6 +75,7 @@ public class UIInventory : MonoBehaviour
         {
             AddSlot(item, item.Count);
         }
+        unEquipBtn.gameObject.SetActive(false);
     }
     
     public void AddSlot(Item item, int count)
@@ -89,8 +97,11 @@ public class UIInventory : MonoBehaviour
         selectedItemName.text = selectedItem.Name;
         
         useBtn.gameObject.SetActive(selectedItem is ConsumableItem);
-        equipBtn.gameObject.SetActive(selectedItem is EquipItem);
-        
+        if(selectedItem is EquipItem item)
+        {
+            equipBtn.gameObject.SetActive(!item.isEquipped);
+            unEquipBtn.gameObject.SetActive(item.isEquipped);
+        }
     }
 
     private void UseItem()

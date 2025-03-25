@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     public void SetEquipStat(EquipItem item)
     {
-        if (!item.isEquipped)
+        if (item.isEquipped)
         {
             Player.Atk += equipAtk;
             Player.Def += equipDef;
