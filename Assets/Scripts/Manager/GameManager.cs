@@ -24,9 +24,6 @@ public class GameManager : MonoBehaviour
     public int equipDef;
     public int equipCri;
 
-    [SerializeField] private Sprite swordIcon;
-    [SerializeField] private Sprite shieldIcon;
-    [SerializeField] private Sprite potionIcon;
 
     private void Awake()
     {
@@ -70,6 +67,10 @@ public class GameManager : MonoBehaviour
 
     public void SetItem()
     {
+        Sprite swordIcon = Resources.Load<Sprite>("ItemSprite/Sword");
+        Sprite shieldIcon = Resources.Load<Sprite>("ItemSprite/Shield");
+        Sprite potionIcon = Resources.Load<Sprite>("ItemSprite/Potion");
+
         EquipItem sword = new EquipItem("검", swordIcon, 10, 0, 1);
         EquipItem shield = new EquipItem("방패", shieldIcon, 0, 5, 0);
         ConsumableItem potion = new ConsumableItem("포션", potionIcon, 1, 3);

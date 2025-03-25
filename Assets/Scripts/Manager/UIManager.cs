@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
     }
     public void OpenStatus()
     {
+
         Status.gameObject.SetActive(!Status.gameObject.activeSelf);
         MainMenu.InventoryBtn.gameObject.SetActive(!Status.gameObject.activeSelf);
         MainMenu.statusBtn.gameObject.SetActive(!Status.gameObject.activeSelf);
@@ -39,6 +41,8 @@ public class UIManager : MonoBehaviour
     public void OpenInventory()
     {
         Inventory.gameObject.SetActive(!Inventory.gameObject.activeSelf);
+
+
         MainMenu.InventoryBtn.gameObject.SetActive(!Inventory.gameObject.activeSelf);
         MainMenu.statusBtn.gameObject.SetActive(!Inventory.gameObject.activeSelf);
 

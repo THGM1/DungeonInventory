@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -44,7 +45,6 @@ public class UIInventory : MonoBehaviour
     {
         if (inventory != null)
         {
-            Debug.Log(curCount);
             curCount = inventory.Count;
             countTxt.text = $"{curCount} / {maxCount}";
         }
@@ -162,5 +162,6 @@ public class UIInventory : MonoBehaviour
         useBtn.gameObject.SetActive(false);
         equipBtn.gameObject.SetActive(false);
     }
+
 
 }
