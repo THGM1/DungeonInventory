@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UIInventory : MonoBehaviour
 {
     [SerializeField] private int curCount; // 현재 아이템 수
-    [SerializeField] private int maxCount;
+    [SerializeField] private int maxCount; // 최대 아이템 수
     [SerializeField] TextMeshProUGUI countTxt;
 
     [Header("버튼")]
