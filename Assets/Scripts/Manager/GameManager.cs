@@ -76,14 +76,6 @@ public class GameManager : MonoBehaviour
         ConsumableItem potion = new ConsumableItem("Æ÷¼Ç", potionIcon, 1, 3);
 
         Player.AddItem(sword);
-        Player.AddItem(sword);
-        Player.AddItem(sword);
-        Player.AddItem(sword);
-        Player.AddItem(sword);
-        Player.AddItem(shield);
-        Player.AddItem(shield);
-        Player.AddItem(shield);
-        Player.AddItem(shield);
         Player.AddItem(shield);
         Player.AddItem(potion);
 
